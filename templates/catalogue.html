@@ -1,0 +1,43 @@
+<!-- catalogue.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalogue - Online Bookstore</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/catalog.css') }}">
+</head>
+<body>
+   <!-- Display flash messages -->
+   {% with messages = get_flashed_messages(with_categories=true) %}
+   {% if messages %}
+       <div class="flash-messages">
+           {% for category, message in messages %}
+               <div class="flash {{ category }}">
+                   {{ message }}
+               </div>
+           {% endfor %}
+       </div>
+   {% endif %}
+{% endwith %}
+
+  <div class="catalogue-container">
+    <h2>Book Catalogue</h2>
+    <div class="catalogue-grid">
+      {% for book in books %}
+      <div class="product-card">
+        <!-- Display book cover image with path -->
+        <img src="{{ url_for('static', filename=book.image_url) }}" alt="{{ book.title }} cover">
+        <h3>{{ book.title }}</h3>
+        <p>{{ book.author }}</p>
+        <p>{{ book.publisher }}</p>
+        <p class="price">${{ book.price }}</p>
+        <!-- Add to Cart button -->
+        <a href="{{ url_for('add_to_cart', book_id=book.id) }}" class="add-to-cart">Add to Cart</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>

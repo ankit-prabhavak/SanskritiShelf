@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Online Bookstore</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}">
+  <style>
+   
+    /* Hero Section */
+.hero {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 100px 20px;
+  font-family: 'Comic Sans MS', cursive, sans-serif; /* Comic Sans font */
+  position: relative;
+  border: 2px solid #ddd; /* Subtle border to separate it */
+  border-radius: 12px; /* Optional: Adds rounded corners for a smooth look */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for separation */
+   
+}
+
+.hero h1 {
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 20px 0;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: #f1c40f; /* Golden yellow color for contrast */
+}
+
+.hero .subheading {
+  font-size: 1.5rem;
+  margin: 20px 0;
+  line-height: 1.6;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 300;
+  font-style: italic; /* Adding a little flair with italics */
+}
+
+.hero .explore-section {
+  margin-top: 40px;
+}
+
+.hero .cta-text {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #f1c40f;
+  margin-top: 10px;
+  text-transform: uppercase;
+  transition: color 0.3s ease-in-out;
+}
+
+.hero .cta-text:hover {
+  color: #fff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.hero .cta-text:active {
+  color: #f1c40f;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+
+  .hero .subheading {
+    font-size: 1.1rem;
+  }
+
+  .hero .cta-text {
+    font-size: 1.3rem;
+  }
+}
+
+
+
+    .cta-button {
+      background-color:  #007bff;
+      color: #fff;
+      padding: 15px 30px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background-color: red;
+    }
+
+    /* Features Section */
+    .features {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .feature {
+      flex: 1;
+      padding: 20px;
+      margin: 0 10px;
+      background-color: #f8f8f8;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .feature h3 {
+      font-size: 1.5rem;
+      margin-top: 15px;
+    }
+
+    .feature p {
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+
+    /* About Us Section */
+.about-us-container {
+  padding: 60px 20px;
+  background-color: #f8f8f8;
+  text-align: center;
+}
+
+.about-us-header h2 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.about-us-header p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.about-us-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.about-us-text {
+  max-width: 50%;
+  text-align: left;
+}
+
+.about-us-text p, .about-us-text ul {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #444;
+}
+
+.about-us-text ul {
+  margin-left: 20px;
+}
+
+.about-us-text ul li {
+  margin-bottom: 10px;
+}
+
+.cta-buttons {
+  margin-top: 30px;
+}
+
+.cta-button {
+  padding: 12px 30px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  margin: 0 10px;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #0056b3;
+}
+
+.about-us-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer Section */
+/* Footer Styles */
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 40px 20px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footer-copyright {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.footer-links,
+.footer-social,
+.footer-newsletter {
+  width: 30%;
+  margin: 20px;
+}
+
+.footer-links h4,
+.footer-social h4,
+.footer-newsletter h4 {
+  color: #f1c40f;
+  margin-bottom: 15px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #f1c40f;
+}
+
+.footer-social a {
+  margin: 0 10px;
+  transition: opacity 0.3s;
+}
+
+.footer-social img {
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+}
+
+.footer-social a:hover img {
+  opacity: 0.8;
+}
+
+.footer-newsletter form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-newsletter input {
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 60%;
+  max-width: 300px;
+  border-radius: 5px;
+  border: none;
+}
+
+.footer-newsletter button {
+  padding: 10px;
+  width: 60%;
+  max-width: 300px;
+  background-color: #f1c40f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.footer-newsletter button:hover {
+  background-color: #d8a500;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-links,
+  .footer-social,
+  .footer-newsletter {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .footer-newsletter input,
+  .footer-newsletter button {
+    width: 80%;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <div class="hero">
+    <h1>Discover Your Next Favorite Book</h1>
+    <p class="subheading">A world of knowledge and imagination awaits you at our Online Bookstore. Whether you're a student, a professional, or an avid reader, we have something just for you.</p>
+
+    <div class="explore-section">
+        <p>Explore a vast collection of books across various genres.</p>
+        <p class="cta-text">Dive in and start reading today!</p>
+    </div>
+</div>
+
+
+
+  <!-- Features Section -->
+  <div class="features">
+    <!-- Feature 1: Extensive Book Collection -->
+    <div class="feature">
+      <img src="{{ url_for('static', filename='images/f9.jpg') }}" alt="Extensive Collection">
+      <h3>Extensive Collection</h3>
+      <p>Find books across various disciplines including engineering, management, and more.</p>
+    </div>
+
+    <!-- Feature 2: User-friendly Interface -->
+    <div class="feature">
+      <img src="{{ url_for('static', filename='images/f3.jpg') }}" alt="User Interface">
+      <h3>User-Friendly Interface</h3>
+      <p>Easy navigation and fast checkout process for an enhanced shopping experience.</p>
+    </div>
+
+    <!-- Feature 3: Affordable Prices -->
+    <div class="feature">
+      <img src="{{ url_for('static', filename='images/f6.jpg') }}" alt="Affordable Prices">
+      <h3>Affordable Prices</h3>
+      <p>Get your hands on the best educational books at competitive prices.</p>
+    </div>
+  </div>
+
+  <!-- Description Section -->
+  <div class="about-us-container">
+    <div class="about-us-header">
+      <h2>About Us</h2>
+      <p>Explore a vast collection of books to fuel your academic success and professional expertise.</p>
+    </div>
+  
+    <div class="about-us-content">
+      <div class="about-us-text">
+        <p>Welcome to our online bookstore, your ultimate source for academic, professional, and personal reading resources.     We offer an extensive range of books across various disciplines including:</p>
+<ul>
+  <li>Business and Economics</li>
+  <li>Science and Technology</li>
+  <li>Literature and Fiction</li>
+  <li>Health and Medicine</li>
+  <li>Self-Improvement and Personal Development</li>
+  <li>Art, History, and Culture</li>
+  <li>And much more!</li>
+</ul>
+
+<p>Our collection includes textbooks, research papers, self-help books, industry guides, and leisure reading materials designed to cater to diverse learning needs and interests. Whether you’re a student, a professional, or a casual reader, we have something for everyone!</p>
+
+<p>Browse our collection easily through our intuitive, user-friendly interface. You can filter books by genre, author, publisher, price, or even specific topics. Once you've found the perfect book, simply add it to your cart and proceed with a smooth checkout process.</p>
+
+        <div class="cta-buttons">
+          <a href="{{ url_for('catalogue') }}" class="cta-button">Browse Our Catalog</a>
+          <a href="{{ url_for('register') }}" class="cta-button">Join Us Today</a>
+        </div>
+      </div>
+  
+      <div class="about-us-image">
+        <img src="{{ url_for('static', filename='images/f7.jpg') }}" alt="Bookshelf Image">
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="footer">
+    <div class="footer-container">
+      <!-- Copyright Information -->
+      <div class="footer-copyright">
+        <p>&copy; 2025 Online Bookstore. All rights reserved.</p>
+      </div>
+  
+      <!-- Links Section -->
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Shipping & Returns</a></li>
+        </ul>
+      </div>
+  
+      <!-- Social Media Links -->
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <a href="#" title="Facebook"><img src="{{ url_for('static', filename='images/facebook.png') }}" alt="Facebook"></a>
+        <a href="#" title="WhatsApp"><img src="{{ url_for('static', filename='images/whatsapp.png') }}" alt="WhatsApp"></a>
+        <a href="#" title="Instagram"><img src="{{ url_for('static', filename='images/instagram.png') }}" alt="Instagram"></a>
+        <a href="#" title="LinkedIn"><img src="{{ url_for('static', filename='images/linkedin.png') }}" alt="LinkedIn"></a>
+      </div>
+  
+      <!-- Newsletter Section -->
+      <div class="footer-newsletter">
+        <h4>Subscribe to Our Newsletter</h4>
+        <p>Get the latest book recommendations, discounts, and offers straight to your inbox!</p>
+        <form action="{{ url_for('subscribe') }}" method="POST">
+          <input type="email" name="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+  
+
+
+</body>
+</html>

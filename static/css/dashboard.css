@@ -1,0 +1,143 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Body Styling */
+body {
+  background-color: #f4f7fc;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  padding: 20px;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+  width: 100%;
+  max-width: 1200px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Header Styling */
+.dashboard-header {
+  background-color: #1a73e8;
+  color: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-header h1 {
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+.dashboard-header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.dashboard-header nav ul li a {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.dashboard-header nav ul li a:hover {
+  color: #ffeb3b;
+}
+
+/* Main Content Styling */
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.dashboard-content h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.account-info, .order-history {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.account-info h3, .order-history h3 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: #1a73e8;
+}
+
+.info-item {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.label {
+  font-weight: 600;
+  color: #1a73e8;
+}
+
+.value {
+  color: #333;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.1rem;
+}
+
+table thead {
+  background-color: #f1f3f7;
+}
+
+table th, table td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+table th {
+  color: #1a73e8;
+}
+
+table tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover {
+  background-color: #e1f1ff;
+}
+
+

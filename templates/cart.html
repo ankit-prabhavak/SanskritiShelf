@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart - Online Bookstore</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/cart.css') }}">
+</head>
+<body>
+  <div class="cart-container">
+    <h2>Your Cart</h2>
+    {% if books_dict %}
+      <div class="cart-items">
+        {% for book_id, book in books_dict.items() %}
+          <div class="cart-item">
+            <img class="cart-item-img" src="{{ url_for('static', filename=book.image_url) }}" alt="{{ book.title }} cover">
+            <div class="cart-item-details">
+              <h3>{{ book.title }}</h3>
+              <p class="cart-item-price">Price: ${{ book.price }}</p>
+              <p class="cart-item-quantity">Quantity: {{ session['cart'][book.id] }}</p>
+            </div>
+            <a class="remove-btn" href="{{ url_for('remove_from_cart', book_id=book.id) }}">Remove</a>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="cart-summary">
+        <p class="total-price">Total Price: ${{ total_price }}</p>
+        <a class="checkout-btn" href="{{ url_for('checkout') }}">Proceed to Checkout</a>
+      </div>
+    {% else %}
+      <p class="empty-cart">Your cart is empty!</p>
+    {% endif %}
+  </div>
+</body>
+</html>

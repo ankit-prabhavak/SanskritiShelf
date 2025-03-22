@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Online Bookstore</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1>Welcome, <span id="username">{{ current_user.username }}</span>!</h1>
+                <nav>
+                    <ul>
+                        <li><a href="{{ url_for('profile') }}">Profile</a></li>
+                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <h2>Your Dashboard</h2>
+            <div class="dashboard-content">
+                <section class="account-info">
+                    <h3>Account Information</h3>
+                    <div class="info-item">
+                        <span class="label">Name:</span>
+                        <span class="value" id="user-name">{{ current_user.name }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Email:</span>
+                        <span class="value" id="user-email">{{ current_user.email }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Phone:</span>
+                        <span class="value" id="user-phone">{{ current_user.phone }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Address:</span>
+                        <span class="value" id="user-address">{{ current_user.address }}</span>
+                    </div>
+                </section>
+
+                <section class="order-history">
+                    <h3>Order History</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Book Title</th>
+                                <th>Quantity</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in orders %}
+                            <tr>
+                                <td>#{{ order.id }}</td>
+                                <td>{{ order.book.title }}</td>
+                                <td>{{ order.quantity }}</td>
+                                <td>{{ order.status }}</td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="4">No orders found</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </main>
+
+    </div>
+</body>
+
+</html>

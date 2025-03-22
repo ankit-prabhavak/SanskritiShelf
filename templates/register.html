@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Online Bookstore</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/registration.css') }}">
+  <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</head>
+<body>
+  <!-- Outer container to center the form -->
+  <div class="registration-container">
+    <!-- Inner container for the form -->
+    <div class="form-container">
+      <h2>Create an Account</h2>
+<form action="{{ url_for('register') }}" method="POST" id="registration-form">
+    <!-- Name Field -->
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+
+    <!-- Username Field -->
+    <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+    </div>
+
+    <!-- Password Field -->
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+
+    <!-- Email Field -->
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+
+    <!-- Phone Field -->
+    <div class="form-group">
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" required>
+    </div>
+
+    <!-- Gender Selection -->
+    <div class="form-group">
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="male" required> Male
+        <input type="radio" id="female" name="gender" value="female" required> Female
+    </div>
+
+    <!-- Date of Birth Selection -->
+    <div class="form-group">
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+    </div>
+
+    <!-- Languages Known Selection -->
+    <div class="form-group">
+        <label>Languages Known:</label>
+        <input type="checkbox" name="languages" value="english"> English
+        <input type="checkbox" name="languages" value="hindi"> Hindi
+        <input type="checkbox" name="languages" value="telugu"> Telugu
+        <input type="checkbox" name="languages" value="tamil"> Tamil
+    </div>
+
+    <!-- Address Field -->
+    <div class="form-group">
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" rows="4" required></textarea>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="form-group">
+        <button type="submit">Register</button>
+    </div>
+</form>
+
+
+      <!-- Already Registered User Section -->
+      <div class="login-option">
+        <p>Already have an account? <a href="{{ url_for('login') }}">Login Here</a></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

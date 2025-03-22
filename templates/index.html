@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SanskritiShelf</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}">
+  <!-- Other meta tags and title -->
+  <link rel="icon" href="{{ url_for('static', filename='MyLogo.ico') }}" type="image/x-icon">
+  <script>
+    // Function to load a page in the iframe, ensuring Home is always reset when clicked
+    function loadPage(page) {
+         const iframe = document.querySelector("iframe");
+         iframe.src = page;
+     }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="top-frame">
+      <!-- Logo Section (added to left side) -->
+      <div class="logo-container">
+        <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Logo" class="logo"> <!-- Replace 'logo.png' with your actual logo file -->
+      </div>
+      <!-- Website Name and Navigation Menu -->
+      <div class="website-name">
+        <h3>A Journey Through Varied Realms of Knowledge</h3>
+        Online Bookstore
+      </div>
+      <nav>
+        <ul>
+          <!-- Home page: Now routed via Flask -->
+          <li><a href="{{ url_for('home_description') }}" target="right-frame">Home</a></li>
+        
+          <!-- Login page -->
+          <li><a href="{{ url_for('login') }}" target="right-frame">Login</a></li>
+        
+          <!-- Registration page -->
+          <li><a href="{{ url_for('register') }}" target="right-frame">Registration</a></li>
+        
+          <!-- Catalogue page -->
+          <li><a href="{{ url_for('catalogue') }}" target="right-frame">Catalogue</a></li>
+        
+          <!-- Cart page -->
+          <li><a href="{{ url_for('cart') }}" target="right-frame">Cart</a></li>
+        </ul>
+        
+        
+        
+      </nav>
+    </div>
+    
+    <div class="content-frame">
+      <iframe name="right-frame" src="{{ url_for('home_description') }}"></iframe>
+    </div>
+  </div>
+</body>
+</html>
+
