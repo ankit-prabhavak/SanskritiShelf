@@ -20,15 +20,20 @@
            {% endfor %}
        </div>
    {% endif %}
-{% endwith %}
+   {% endwith %}
 
   <div class="catalogue-container">
     <h2>Book Catalogue</h2>
     <div class="catalogue-grid">
       {% for book in books %}
       <div class="product-card">
-        <!-- Display book cover image with path -->
-        <img src="{{ url_for('static', filename=book.image_url) }}" alt="{{ book.title }} cover">
+        <!-- Display book cover image with correct path handling -->
+        {% if book.image_url.startswith('http') %}
+            <img src="{{ book.image_url }}" alt="{{ book.title }} cover">
+        {% else %}
+            <img src="{{ url_for('static', filename='images/' + book.image_url) }}" alt="{{ book.title }} cover">
+        {% endif %}
+
         <h3>{{ book.title }}</h3>
         <p>{{ book.author }}</p>
         <p>{{ book.publisher }}</p>
@@ -41,3 +46,5 @@
   </div>
 </body>
 </html>
+
+

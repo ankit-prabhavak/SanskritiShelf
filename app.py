@@ -10,15 +10,15 @@ def add_sample_books():
     # Sample books to add to the database
     sample_books = [
         Book(title="The Great Gatsby", author="F. Scott Fitzgerald", publisher="Scribner", price=10.99, stock=5, 
-             image_url="images/book1.jpg"),  # Relative path to static/images/
+             image_url="book1.jpg"),  # Relative path to static/images/
         Book(title="1984", author="George Orwell", publisher="Secker & Warburg", price=8.99, stock=10, 
-             image_url="images/book2.jpg"),  # Relative path to static/images/
+             image_url="book2.jpg"),  # Relative path to static/images/
         Book(title="To Kill a Mockingbird", author="Harper Lee", publisher="J.B. Lippincott & Co.", price=12.99, stock=8,
-             image_url="images/book3.jpg"),  # Relative path to static/images/
+             image_url="book3.jpg"),  # Relative path to static/images/
         Book(title="Pride and Prejudice", author="Jane Austen", publisher="T. Egerton", price=7.99, stock=4, 
-             image_url="images/book4.jpg"),  # Relative path to static/images/
+             image_url="book4.jpg"),  # Relative path to static/images/
         Book(title="The Catcher in the Rye", author="J.D. Salinger", publisher="Little, Brown and Company", price=9.99, stock=7,
-             image_url="images/book5.jpg")  # Relative path to static/images/
+             image_url="book5.jpg")  # Relative path to static/images/
     ]
     
     if Book.query.count() == 0:  # If there are no books in the database, add the sample books
@@ -191,11 +191,17 @@ def profile():
     # You can pass additional user data if needed
     return render_template("profile.html", user=current_user)
 
-# Catalogue page - Displays all books
 @app.route('/catalogue')
 def catalogue():
     books = Book.query.all()  # Fetch all books from the database
+    
+    # Ensure image URLs are properly formatted
+    for book in books:
+        if not book.image_url.startswith("http"):  # If not an external link
+            book.image_url = url_for('static', filename=f'images/{book.image_url}')  # Prepend static folder
+    
     return render_template("catalogue.html", books=books)
+
 
 # Add to cart route
 @app.route('/add_to_cart/<int:book_id>', methods=['GET', 'POST'])
